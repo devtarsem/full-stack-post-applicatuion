@@ -60,7 +60,7 @@ app.use('/', async(req, res)=>{
     user : userFind,
     postAll : post,
     bookmarks : book,
-    comment : comment,
+    comment : comment.length===0 ? [{user : "no user"}, "no comment"] : comment,
     userPost : userPost
   })
 })
