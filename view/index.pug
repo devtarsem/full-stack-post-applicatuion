@@ -1,0 +1,150 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Document
+        link(rel="stylesheet" href='/css/index.css')
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    body 
+        section.section-main-header 
+            .overlay.hidden
+            .updating-post-container.flex.flex-dir.gap16.pad24.hidden
+                h2.tertiary-heading.ter--update update post
+                form.add-post-container-form.flex.flex-dir.gap16
+                    .credential.flex.flex-dir.gap08 
+                        label.label.id-needed 444564484654984894
+                    .credential.flex.flex-dir.gap08 
+                        label.label Title of post
+                        input.input(placeholder='title' type='text').title-update
+                    .credential.flex.flex-dir.gap08 
+                        label.label Description of post
+                        input.input(placeholder='description' type='text').des-update
+                    .credential.flex.flex-dir.gap08 
+                        button.loginbtn.updatepost--js update post !
+                        button.closeLogin close
+
+            .add-post-container.flex.flex-dir.gap16.pad24.hidden 
+                h2.tertiary-heading.ter--update Add Post
+                form.add-post-container-form.flex.flex-dir.gap16
+                    .credential.flex.flex-dir.gap08 
+                        label.label Title of post
+                        input.input(placeholder='title' type='text').title-post
+                    .credential.flex.flex-dir.gap08 
+                        label.label Description of post
+                        input.input(placeholder='description' type='text').des-post
+                    .credential.flex.flex-dir.gap08 
+                        label.label Tag
+                        input.input(placeholder='@mohan' type='text').tag-post
+                    .credential.flex.flex-dir.gap08 
+                        button.loginbtn.addPostBtn--js Add post !
+                        button.closeLogin close
+
+            .signup-container.flex.flex-dir.gap16.pad24.hidden
+                h2.tertiary-heading.ter--update sign-up
+                form.signup-form.flex.flex-dir.gap16
+                    .credential.flex.flex-dir.gap08 
+                        label.label username 
+                        input(placeholder='tarsem' type='text').input.username-sign
+                    .credential.flex.flex-dir.gap08 
+                        label.label email 
+                        input(placeholder='ts@gmail.com' type='email').input.email-sign
+                    .credential.flex.flex-dir.gap08 
+                        label.label password 
+                        input(placeholder='********' type='password').input.password-sign
+                    .credential.flex.flex-dir.gap08 
+                        button.loginbtn.signupbtn--js signup !
+                        button.closeLogin.close-signup-btn close
+
+            .login-container.flex.flex-dir.gap16.pad24.hidden
+                h2.tertiary-heading.ter--update Login
+                form.login-form.flex.flex-dir.gap16
+                    .credential.flex.flex-dir.gap08 
+                        label.label email 
+                        input(placeholder='ts@gmail.com' type='email').input.email-login
+                    .credential.flex.flex-dir.gap08 
+                        label.label password 
+                        input(placeholder='********' type='password').input.password-login
+                    .credential.flex.flex-dir.gap08 
+                        button.loginbtn.loginbtn--js Login !
+                        button.closeLogin.close-login-btn close
+
+
+
+            nav.navigation.flex.flex-2
+                h1.primary-heading Post application
+                if !user
+                    .link-container.flex.flex-1.gap24
+                        button.link-box-btn.flex.flex-1.gap08.login--js
+                            ion-icon(name="log-in-outline").icon
+                            p.btn-name login
+                        button.link-box-btn.flex.flex-1.gap08.signup--js
+                            ion-icon(name="log-in-outline").icon
+                            p.btn-name Signup
+                        
+                else
+                    .link-container.flex.flex-1.gap24
+                        h2.secondary-heading welcome to the application 
+                        button.link-box-btn.flex.flex-1.gap08.make-post--js
+                            ion-icon(name="add-circle-outline").icon
+                            p.btn-name Make post
+
+            main.main-section.grid.grid-4-cols 
+                .book-marks.pad16.flex.flex-dir.gap16
+                    h4.fouth-heading Bookmarks 
+                    for book in bookmarks
+                        .bookmark-container.flex.flex-dir.gap08.pad16 
+                            p.username-book= `${book.user.username}` 
+                            p.title-book= `${book.postid.title}`
+                
+                .comment-posts.pad16.flex.flex-dir.gap16
+                    h4.fouth-heading your last comment
+                    .bookmark-container.flex.flex-dir.gap08.pad16 
+                        p.username-book= `${comment[0].user.username}` 
+                        p.your-comment= `${comment[0].comment}`
+                
+                .all-posts.flex.flex-dir.gap16.pad16
+                    h2.secondary-heading All Posts 
+                    for post in postAll
+                        .all-posts-container.pad16.flex.flex-dir.gap08
+                            p.id= `${post._id}`
+                            .dp-container.flex.flex-2
+                                img(src="/img/icon.png", alt="dp").dp-img
+                                p.username= `${post.username}` 
+                            p.title= `${post.title}`
+                            p.des= `${post.description}`
+                            .status-container.flex.flex-3.gap16 
+                               
+                                button.flex.flex-1.gap08.status-btn 
+                                    ion-icon(name="pricetag-sharp").icon-status
+                                    p.likes= `${post.comments.length}+`
+                                button.flex.flex-1.gap08.status-btn.bookmarkbtn
+                                    ion-icon(name="bookmark-outline").icon-status
+                            form.add-comment-form.flex.flex-dir.gap16
+                                textarea(id="comment" name="comment" rows="4" cols="80").comment-textspace
+                                button.add-comment Add comment!
+                            .all-coments-container.flex.flex-dir.gap16
+                                h3.tertiary-heading.ter--update All comments 
+                                for comment in post.comments
+                                    .comment-container.flex.flex-dir.gap08
+                                        p.comment-uername= `${comment[0]}`
+                                        p.user-comment= `${comment[1]}` 
+                                
+                .user-posts.flex.flex-dir.gap16.pad16
+                    h2.secondary-heading Your posts 
+                    for post in userPost
+                        .post-container-user.pad16.flex.flex-dir.gap08
+                            p.post-id= `${post._id}`
+                            p.title-post= `${post.title}`
+                            p.des-post= `${post.description}`
+                            .change-btns.flex.flex-3.gap16 
+                                button.update.updatePOSTBtn
+                                    ion-icon(name="pencil-outline").icon-change
+                                button.update.deletePOSTBtn
+                                    ion-icon(name="trash-outline").icon-change
+
+        script(src="/js/auth.js") 
+        script(src="/js/post.js")  
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.6/axios.min.js") 

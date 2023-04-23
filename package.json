@@ -1,0 +1,26 @@
+{
+  "name": "postapplication",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "tarsem",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "http-proxy-middleware": "^2.0.6",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.4",
+    "nodemailer": "^6.9.1",
+    "nodemon": "^2.0.22",
+    "path": "^0.12.7",
+    "util": "^0.12.5"
+  }
+}
